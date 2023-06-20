@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Andrea Lazzarini</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+<style>.half-size { width: 50%; }</style>
+</head>
+<body>
+<div id="preamble" class="status">
+<style>
+                              #navbar ul {
+                                list-style-type: none;
+                                margin: 0;
+                                padding: 0;
+                                overflow: hidden;
+                              }
+
+
+                              #navbar li {
+                                float: left;
+                              }
+
+                              #navbar li a {
+                                display: block;
+                                text-align: center;
+                                padding: 14px 16px;
+                                text-decoration: none;
+                              }
+
+                              #navbar li a:hover {
+                              }
+
+                              #navbar li a.current {
+                                  /* Styles for active link */
+                                  background-color: #000;
+                                  color: #fff;
+                                }
+                            </style>
+</div>
+<div id="content" class="content">
+<h1 class="title">Andrea Lazzarini</h1>
+<div id="navbar">
+<ul>
+<li><a href="index.html" class="current"">Home</a></li>
+<li><a href="publications.html">Publications</a></li>
+<li><a href="cv.html">CV and contacts</a></li>
+</ul>
+<hr>
+</div>
+
+
+<div id="org71b1dc7" class="figure">
+<p><img src="foto-profilo.jpg" alt="foto-profilo.jpg" class="half-size" />
+</p>
+</div>
+
+
+<p>
+I am Assistant Professor (RTD/B) of Italian Literature at the DIRAAS (Department
+of Italian Studies, Romance Studies, Ancient Studies, Arts, and Entertainment)
+of the University of Genoa. In 2020-2021 I was <i>Premier Assistant</i> at the
+<i>Section d’Italien</i> of the University of Lausanne, and holder of the Praloran
+Fellowship (Fondazione Ezio Franceschini – Florence / University of Lausanne).
+In 2018-2020 I was Research Fellow at the University of Modena and Reggio
+Emilia. I have also taught courses at the Universities of Pisa and Bologna.
+</p>
+
+<p>
+My research activity has concentrated on the 16th, 17th, and 18th centuries,
+with my main focus on the Italian <i>Seicento</i>. Recently, it has delved into the
+works of Federico De Roberto (1861-1927) and their connections with <i>fin de
+siècle</i> positivist culture.
+</p>
+</div>
+</body>
+</html>

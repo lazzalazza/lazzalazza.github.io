@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Andrea Lazzarini</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="preamble" class="status">
+<style>
+                              #navbar ul {
+                                list-style-type: none;
+                                margin: 0;
+                                padding: 0;
+                                overflow: hidden;
+                              }
+
+
+                              #navbar li {
+                                float: left;
+                              }
+
+                              #navbar li a {
+                                display: block;
+                                text-align: center;
+                                padding: 14px 16px;
+                                text-decoration: none;
+                              }
+
+                              #navbar li a:hover {
+                              }
+
+                              #navbar li a.current {
+                                  /* Styles for active link */
+                                  background-color: #000;
+                                  color: #fff;
+                                }
+                            </style>
+</div>
+<div id="content" class="content">
+<h1 class="title">Andrea Lazzarini</h1>
+<div id="navbar">
+<div id="navbar">
+<ul>
+<li><a href="/index.html">Home</a></li>
+<li><a href="/publications.html">Publications</a></li>
+<li><a href="/cv.html" class="current">CV and contacts</a></li>
+</ul>
+<hr>
+</div>
+
+
+<p>
+email: <a href="mailto:andrea.lazzarini@unige.it">andrea.lazzarini@unige.it</a>
+</p>
+
+<p>
+<a href="CV_europass_lazzarini.pdf">CV - Andrea Lazzarini</a>
+</p>
+</div>
+</body>
+</html>

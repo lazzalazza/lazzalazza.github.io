@@ -1,0 +1,101 @@
+#+TITLE: Andrea Lazzarini
+#+bibliography: ~/Dropbox/Standard/Bibliografia/bibliografia_generale.bib
+#+cite_export: csl  /Users/test/Dropbox/Standard/Modelli/andrea_english.csl
+#+html: <div id="navbar">
+#+html:  <ul>
+#+html:    <li><a href="index.html">Home</a></li>
+#+html:    <li><a href="publications.html" class="current">Publications</a></li>
+#+html:    <li><a href="cv.html">CV and contacts</a></li>
+#+html:  </ul>
+#+html:  <hr>
+#+html: </div>
+
+* Monographs and critical editions
+
+  [cite:@lazzarini2021c]
+
+  [cite:@lazzarini2020a]
+
+  [cite:@cortese2018a]
+
+  [cite:@continilazzarini2020a]
+
+* Peer-reviewed Articles
+
+  [cite:@lazzarini2023a]
+
+  [cite:@lazzarini2022b]
+
+  [cite:@lazzarini2022a]
+
+  [cite:@lazzarini2020f]
+
+  [cite:@lazzarini2020b]
+
+  [cite:@lazzarini2019b]
+
+  [cite:@lazzarini2017c]
+
+  [cite:@lazzarini2016a]
+
+  [cite:@lazzarini2016b]
+
+  [cite:@lazzarini2014a]
+
+  [cite:@lazzarini2013a]
+
+  [cite:@lazzarini2013c]
+
+  [cite:@lazzarini2013b]
+
+  [cite:@lazzarini2011b]
+
+  [cite:@lazzarini2011a]
+
+
+* Book chapters
+
+
+  [cite:@lazzarini2021d]
+
+  [cite:@lazzarini2021a]
+
+  [cite:@lazzarini2021b]
+
+  [cite:@lazzarini2020g]
+
+  [cite:@lazzarini2020c]
+
+  [cite:@lazzarini2020d]
+
+  [cite:@lazzarini2018a]
+
+  [cite:@lazzarini2017b]
+
+  [cite:@lazzarini2016c]
+
+  [cite:@lazzarini2012b]
+
+  [cite:@contelazzarini2012a]
+
+
+* Encyclopedia Articles
+
+  [cite:@lazzarini2019a]
+
+  [cite:@lazzarini2023b]
+
+
+* Reviews
+
+  [cite:@lazzarini2020e]
+
+  [cite:@lazzarini2019d]
+
+  [cite:@lazzarini2010a]
+
+
+* In preparation
+
+  Alessandro Tassoni, /La secchia rapita/, ed. by Ottavio Besomi, Maria Cristina
+  Cabani, Andrea Lazzarini.

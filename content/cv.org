@@ -1,0 +1,17 @@
+#+TITLE: Andrea Lazzarini
+#+bibliography: ~/Dropbox/Standard/Bibliografia/bibliografia_generale.bib
+#+cite_export: csl  /Users/test/Dropbox/Standard/Modelli/andrea_english.csl
+#+html: <div id="navbar">
+#+html: <div id="navbar">
+#+html:  <ul>
+#+html:    <li><a href="/index.html">Home</a></li>
+#+html:    <li><a href="/publications.html">Publications</a></li>
+#+html:    <li><a href="/cv.html" class="current">CV and contacts</a></li>
+#+html:  </ul>
+#+html:  <hr>
+#+html: </div>
+
+
+email: [[mailto:andrea.lazzarini@unige.it][andrea.lazzarini@unige.it]]
+
+[[file:CV_europass_lazzarini.pdf][CV - Andrea Lazzarini]]
