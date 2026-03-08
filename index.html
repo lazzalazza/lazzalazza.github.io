@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Andrea Lazzarini — Italianistica</title>
+  <style>
+
+    :root {
+      --blue:      #004699;
+      --blue-mid:  #0066cc;
+      --blue-pale: #e8f0fa;
+      --gray:      #555;
+      --gray-light:#888;
+      --rule:      #b4c8e0;
+      --bg:        #fff;
+      --text:      #222;
+      --font-main: 'TeX Gyre Pagella', 'Palatino Linotype', Palatino, 'Book Antiqua', serif;
+      --font-sans: 'TeX Gyre Heros', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --max-width: 900px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { font-size: 17px; scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-main);
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.65;
+      margin: 0; padding: 0;
+    }
+    /* Nav — riga singola, centrata, scroll orizzontale su mobile */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--blue);
+      overflow-x: auto;          /* scroll orizzontale invece del wrapping */
+      scrollbar-width: none;     /* Firefox: nascondi scrollbar */
+    }
+    nav::-webkit-scrollbar { display: none; }  /* Chrome/Safari */
+    nav ul {
+      list-style: none; margin: 0; padding: 0;
+      display: flex; flex-wrap: nowrap; justify-content: center;
+      min-width: max-content;    /* evita la compressione delle voci */
+    }
+    nav ul li a {
+      display: block; color: #fff; text-decoration: none;
+      font-family: var(--font-sans); font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.72rem 1.1rem; transition: background 0.15s;
+      white-space: nowrap;
+    }
+    nav ul li a:hover { background: rgba(255,255,255,0.12); }
+    /* Sottile separatore verticale tra le voci */
+    nav ul li + li { border-left: 1px solid rgba(255,255,255,0.2); }
+    /* Layout */
+    main { max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem 4rem; }
+    /* Header */
+    .cv-header {
+      display: flex; align-items: flex-start; gap: 2rem;
+      border-bottom: 3px solid var(--blue);
+      padding: 2.5rem 0 1.8rem; margin-bottom: 2.5rem;
+    }
+    .cv-info { flex: 1; }
+    .cv-info h1 { font-family: var(--font-main); font-size: 2.1rem; font-weight: bold;
+                  color: var(--blue); margin: 0 0 0.3rem; line-height: 1.2; }
+    .cv-position { font-size: 0.96rem; color: var(--gray); font-style: italic;
+                   margin: 0.25rem 0 0.6rem; line-height: 1.45; }
+    .cv-contacts { font-size: 0.84rem; color: var(--gray); margin: 0; }
+    .cv-contacts a { color: var(--blue-mid); text-decoration: none; }
+    .cv-contacts a:hover { text-decoration: underline; }
+    .cv-photo img { max-height: 135px; border-radius: 3px;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.18); }
+    /* Sezioni */
+    h1 { font-family: var(--font-sans); font-size: 0.95rem; font-weight: 700;
+         color: var(--blue); text-transform: uppercase; letter-spacing: 0.06em;
+         margin: 3rem 0 0.5rem; padding-bottom: 0.3rem;
+         border-bottom: 1px solid var(--rule); }
+    h2 { font-family: var(--font-sans); font-size: 0.88rem; font-weight: 600;
+         color: var(--gray); margin: 1.6rem 0 0.3rem; }
+    /* Testo */
+    p { font-size: 0.93rem; margin: 0 0 0.85rem;
+        text-align: justify; hyphens: auto; }
+    /* Liste descrittive */
+    dl { margin: 0.3rem 0 0.8rem; }
+    dt { float: left; clear: left; width: 10.5rem; font-size: 0.81rem;
+         font-style: italic; color: var(--gray-light);
+         padding-top: 0.1rem; padding-right: 1rem; line-height: 1.5; }
+    dd { margin-left: 11rem; margin-bottom: 0.65rem;
+         font-size: 0.91rem; line-height: 1.6; }
+    dd::after { content: ""; display: table; clear: both; }
+    /* Liste nel contenuto (scopo a main per non influenzare la nav) */
+    main ul { padding-left: 0; list-style: none; margin: 0.2rem 0 0.8rem; }
+    main ul li { margin-bottom: 0.7rem; font-size: 0.91rem; line-height: 1.6;
+                 padding-left: 1.2rem; position: relative; }
+    main ul li::before { content: "—"; position: absolute; left: 0; color: var(--rule); }
+    /* Misc */
+    .smallcaps { font-variant: small-caps; }
+    a { color: var(--blue-mid); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    /* Footer */
+    footer { max-width: var(--max-width); margin: 3rem auto 0;
+             padding: 1rem 1.5rem 2rem;
+             border-top: 1px solid var(--rule);
+             font-size: 0.78rem; color: var(--gray-light);
+             font-family: var(--font-sans); }
+    /* Responsive */
+    @media (max-width: 600px) {
+      html { font-size: 15px; }
+      .cv-header { flex-direction: column-reverse; align-items: center; text-align: center; }
+      dt { float: none; width: auto; margin-bottom: 0.1rem; }
+      dd { margin-left: 0; padding-left: 0.8rem;
+           border-left: 2px solid var(--rule); margin-bottom: 1rem; }
+      nav ul { justify-content: flex-start; } /* su mobile scorre da sinistra */
+    }
+
+  </style>
+</head>
+<body>
+<nav>
+  <ul>
+    <li><a href="#posizione">Posizione</a></li>
+    <li><a href="#progetti-finanziati-in-seguito-a-peer-evaluation">Progetti finanziati in seguito a peer evaluation</a></li>
+    <li><a href="#presentazione">Presentazione</a></li>
+    <li><a href="#pubblicazioni">Pubblicazioni</a></li>
+  </ul>
+</nav>
+<main>
+<header class="cv-header">
+  <div class="cv-info">
+    <h1>Andrea Lazzarini</h1>
+    <p class="cv-position">Professore Associato di Letteratura Italiana<br>
+    Università degli Studi di Genova, DIRAAS</p>
+    <p class="cv-contacts">
+      <a href="mailto:andrea.lazzarini@unige.it">andrea.lazzarini@unige.it</a> &middot;
+      Università di Genova (DIRAAS), via Balbi 2, 16126 Genova
+    </p>
+  </div>
+  <div class="cv-photo">
+    <img src="IMG_8273.jpeg" alt="Andrea Lazzarini"/>
+  </div>
+</header>
+<h1 id="posizione">Posizione</h1>
+<dl>
+<dt>1/10/2024–</dt>
+<dd>
+<p><strong>Professore Associato Letteratura Italiana
+(ITAL-01/A)</strong><br />
+Università degli Studi di Genova, Dipartimento di italianistica,
+romanistica, antichistica, arti e spettacolo (DIRAAS)</p>
+</dd>
+<dt>2022–</dt>
+<dd>
+<strong>Membro del collegio docenti</strong><br />
+Dottorato in Letterature e Culture Classiche e Moderne — Università
+degli Studi di Genova
+</dd>
+</dl>
+<h1 id="progetti-finanziati-in-seguito-a-peer-evaluation">Progetti
+finanziati in seguito a <em>peer evaluation</em></h1>
+<dl>
+<dt>2023–2026</dt>
+<dd>
+<p><strong>PRIN 2022</strong><br />
+<em>Literature and Sciences in the ‘Nuova Italia’ (1848–1915):
+Psychology, Anthropology, Medicine.</em> (Principal Investigator)</p>
+</dd>
+<dt>2023–2026</dt>
+<dd>
+<strong>PRIN PNRR</strong><br />
+<em>Theorizing the Passions: Paolo Mantegazza, his cultural network and
+19th-century Italian Literature</em> (Substitute Principal Investigator
+and Head of Local Unit)
+</dd>
+</dl>
+<h1 id="presentazione">Presentazione</h1>
+<p>La mia attività di ricerca si è concentrata soprattutto sulla
+letteratura italiana dei secoli XVI–XIX, con interesse trasversale per i
+rapporti tra cultura letteraria, saperi scientifici e dibattito
+critico-teorico. Un tratto caratteristico del mio lavoro è l'attenzione
+alla dimensione filologica, linguistica e ecdotica della ricerca
+italianistica.</p>
+<p>Un nucleo consolidato riguarda Alessandro Tassoni e la storia della
+critica e della poetica tra petrarchismo cinquecentesco ed età
+illuministica: a questo filone sono dedicate le monografie <em>‘Pazza
+cosa sarebbe la poesia’. Alessandro Tassoni lettore del Trecento fra
+Barocco ed Età muratoriana</em> (2020) e <em>I Fiscali del Diavolo.
+Muratori, Fontanini e Castelvetro</em> (2021), oltre a studi su Lodovico
+Castelvetro e sulle polemiche erudite del primo Settecento. È in
+preparazione l'edizione commentata della <em>Secchia rapita</em> (con
+Maria Cristina Cabani e Ottavio Besomi). Il filone più recente concerne
+l'opera di Federico De Roberto nei suoi rapporti con la cultura
+positivistica europea (Paul Bourget, Cesare Lombroso, teorie della
+degenerazione), cui sono dedicati contributi sugli <em>Amori</em>, sui
+<em>Viceré</em> e su <em>Spasimo</em> (dal 2022). A questi temi sono
+collegati i due progetti PRIN 2022 conclusi nel febbraio 2026:
+<em>Literature and Sciences in the ‘Nuova Italia’ (1848–1915):
+Psychology, Anthropology, Medicine</em> (Principal Investigator) e
+<em>Theorizing the Passions: Paolo Mantegazza, his cultural network and
+19th-century Italian Literature</em> (Substitute Principal Investigator
+e responsabile dell'unità locale).</p>
+<p>Mi sono occupato inoltre della letteratura meridionale tra Cinque e
+Seicento e della circolazione delle forme liriche e narrative nel
+Barocco (Cortese, Bracciolini, Basile, Marini, Stigliani), con
+attenzione ai fenomeni di commistione linguistica e alla ricezione della
+tradizione classica in contesti periferici. L'interesse per la filologia
+d'autore e la dimensione archivistica della letteratura ha trovato
+espressione nel contributo al volume <em>Volontà d'archivio</em> (2023)
+e negli studi sull'eredità della critica stilistica in Francesco
+Orlando, oltre che in ricerche recenti sulla genesi linguistica e
+narrativa delle <em>Avventure di Pinocchio</em>. Sono Socio
+corrispondente del <em>Centro di studi muratoriani</em> (Modena) e
+membro di <em>ADI</em>, <em>MOD</em>, <em>Associazione Sigismondo
+Malatesta</em>, <em>Renaissance Society of America</em> e <em>Canadian
+Association for Italian Studies</em>.</p>
+<h1 id="pubblicazioni">Pubblicazioni</h1>
+<h2 id="monografie-e-edizioni-critiche">Monografie e edizioni
+critiche</h2>
+<ul>
+<li>Alessandro Tassoni, <em>La secchia rapita</em>, edizione commentata
+(con Maria Cristina Cabani e Ottavio Besomi). Di prossima uscita nella
+collana della Fondazione Bembo.</li>
+<li><span class="citation" data-cites="lazzarini2021c"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>I fiscali del Diavolo.
+Muratori, Fontanini e Castelvetro. Con un’edizione del «Primo esame
+dell’<span>«Eloquenza italiana»</span>»</em>, Pisa, ETS,
+2021</span></li>
+<li><span class="citation" data-cites="lazzarini2020a"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>«Pazza cosa sarebbe la
+poesia». Alessandro Tassoni lettore del Trecento fra Barocco ed Età
+Muratoriana</em>, Modena, Franco Cosimo Panini, 2020</span></li>
+<li><span class="citation" data-cites="cortese2018a"><span
+class="smallcaps">Giulio Cesare Cortese</span>, <em>La Rosa.
+Favola</em>, a cura di Andrea Lazzarini, Lucca, Pacini Fazzi,
+2018</span></li>
+</ul>
+<h2 id="curatele">Curatele</h2>
+<ul>
+<li>(Insieme a Duccio Tongiorgi) — Sezione di articoli su De Roberto in
+«Rassegna Europea della Letteratura Italiana» (3, 2023)</li>
+<li><span class="citation" data-cites="continilazzarini2020a"><span
+class="smallcaps">Federico Contini</span>, <span
+class="smallcaps">Andrea Lazzarini</span> (a cura di), <em>Francesco
+Bracciolini. Gli <span>«Ozi»</span> e la corte</em>, Pisa, Pisa
+University Press, 2020</span></li>
+</ul>
+<h2 id="articoli-in-rivista">Articoli in rivista</h2>
+<ul>
+<li><span class="citation" data-cites="lazzarini2025a"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>Ritratti di un falsario.
+Finzioni e fantasmi bibliografici nel libro di lettere di Tommaso
+Stigliani</em>, «Studi secenteschi», LXVI, 2025, pp. 113-147</span></li>
+<li><span class="citation" data-cites="lazzarini2025b"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>Non è poi così grave. Sul
+titolo dei Viceré di Federico De Roberto</em>, «Esperienze letterarie»,
+L, 2025, fasc. 1, pp. 99-108, DOI: <a
+href="https://doi.org/10.19272/202507901006"
+role="doc-biblioref">10.19272/202507901006</a></span></li>
+<li><span class="citation" data-cites="lazzarini2025c"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>Varietà
+pinocchiesca</em>, «Oblio», XV, 2025, fasc. 51, pp. 180-192</span></li>
+<li><span class="citation" data-cites="lazzarini2025d"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>L’impossibilità
+dell’illusione. Intorno a Spasimo</em>, in <em>Lo sperimentalismo
+narrativo di Federico De Roberto</em>, a cura di <span
+class="smallcaps">Giovanni Maffei</span>, <span
+class="smallcaps">Concetta Maria Pagliuca</span>, Napoli, FedOAPress,
+2025, pp. 73-97</span></li>
+<li><span class="citation" data-cites="lazzarini2024c"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>Vite «curiose, ben
+intrecciate e improvisamente disciolte». Sondaggi sulla <span>«Settimana
+Santa ben avventurosamente sfuggita»</span> di Giovanni Ambrosio
+Marini</em>, «Generi», II, 2024, pp. 147-162</span></li>
+<li><span class="citation" data-cites="lazzarini2024d"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>Un ritrovato esemplare
+della <span>«Schiavitudine mondana ridotta in libertà»</span> di
+Giovanni Ambrosio Marini</em>, «Studi secenteschi», LXV, 2024, pp.
+366-371</span></li>
+<li><span class="citation" data-cites="lazzarini2023a"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>«Tutto si paga». I
+<span>«Viceré»</span> e la degenerazione</em>, «Rassegna Europea della
+Letteratura Italiana», LXIII–LXIV, 2024, pp. 91-121</span></li>
+<li><span class="citation" data-cites="lazzarinitongiorgi2023a"><span
+class="smallcaps">Andrea Lazzarini</span>, <span
+class="smallcaps">Duccio Tongiorgi</span>, <em>Letture dei
+«Viceré»</em>, «Rassegna Europea della Letteratura Italiana», 2023, p.
+i.c.s.</span></li>
+<li><span class="citation" data-cites="lazzarini2022b"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>Paradigma testuale,
+paradigma indiziario. Aspetti del lascito della critica stilistica sulla
+teoria di Francesco Orlando</em>, «L’Ulisse», XXV, 2022, pp.
+37-48</span></li>
+<li><span class="citation" data-cites="lazzarini2022a"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>«L’amore c’è soltanto nel
+titolo». Gli Amori di Federico De Roberto tra Bourget e Lombroso</em>,
+«Oblio», XII, 2022, pp. 135-157</span></li>
+<li><span class="citation" data-cites="lazzarini2020f"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>Gli autografi delle
+lettere di Alessandro Tassoni ad Albertino Barisoni. Osservazioni
+filologiche preliminari</em>, «Nuova Rivista di Letteratura Italiana»,
+XXIII, 2020, pp. 127-148, DOI: <a
+href="https://doi.org/10.4454/nrli.v23i2.366"
+role="doc-biblioref">10.4454/nrli.v23i2.366</a></span></li>
+<li><span class="citation" data-cites="lazzarini2020b"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>Tra Aristotele e Alberti.
+Poesia e arti figurative nella <span>«Poetica»</span> di Lodovico
+Castelvetro</em>, «Giornale Storico della Letteratura Italiana», CXCVII,
+2020, pp. 101-120</span></li>
+<li><span class="citation" data-cites="lazzarini2019b"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>Laura, Francesco e
+Tassoni. Una critica secentesca agli amori di Petrarca</em>,
+«Griseldaonline», XVIII, 2019, pp. 45-62, URL: <a
+href="https://doi.org/10.6092/issn.1721-4777/9865"
+role="doc-biblioref">https://doi.org/10.6092/issn.1721-4777/9865</a></span></li>
+<li><span class="citation" data-cites="lazzarini2017c"><span
+class="smallcaps">Andrea Lazzarini</span>, <em><span>«Il fiore della
+granadiglia»</span>. Una raccolta poetica del primo Seicento e il suo
+contesto europeo</em>, «Annali della Scuola Normale Superiore di Pisa»,
+IX, 2017, pp. 101-125, 303-308</span></li>
+<li><span class="citation" data-cites="lazzarini2016a"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>Ancora sui rapporti tra
+letteratura dialettale riflessa e toscano: una dedicatoria di G. C.
+Cortese a G. B. Basile</em>, «Studi secenteschi», LVII, 2016, pp.
+159-183</span></li>
+<li><span class="citation" data-cites="lazzarini2016b"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>Due esemplari ignoti
+delle Opere Burlesche di Giulio Cesare Cortese</em>, «Studi
+secenteschi», LXVII, 2016, pp. 324-334</span></li>
+<li><span class="citation" data-cites="lazzarini2014a"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>Poesia eroicomica e
+satira poetica: Tassoni, Bracciolini, Marino</em>, «Nuova Rivista di
+Letteratura Italiana», XVII, 2014, pp. 107-147</span></li>
+<li><span class="citation" data-cites="lazzarini2013a"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>Il «Potta di Modena».
+Precisazioni storico-linguistiche attorno a un personaggio della
+<em>Secchia rapita</em> di Alessandro Tassoni</em>, «Nuova Rivista di
+Letteratura Italiana», XVI, 2013, pp. 61-93</span></li>
+<li><span class="citation" data-cites="lazzarini2013c"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>Materiali per
+<span>«Elegia di Pico Farnese»</span>. Fonti, modelli, incroci</em>,
+«Italianistica», XLII, 2013, pp. 11-33</span></li>
+<li><span class="citation" data-cites="lazzarini2013b"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>Una polemica intorno al
+<span>«Pastor fido in lingua napolitana»</span> di Domenico Basile</em>,
+«Studi secenteschi», LIV, 2013, pp. 187-203</span></li>
+<li><span class="citation" data-cites="lazzarini2011b"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>Ritratti, cortine,
+<span>«celesti arcani»</span>. Note su arte, sacralità e profano
+nell’<span>«Adone»</span> di G. B. Marino</em>, «L’Ellisse», VI, 2011,
+pp. 105-128</span></li>
+<li><span class="citation" data-cites="lazzarini2011a"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>Una Testimonianza di
+Tommaso Stigliani. Palazzi e libri di disegno in una dichiarazione di
+poetica mariniana</em>, «Italianistica», XL, 2011, pp. 73-85</span></li>
+</ul>
+<h2 id="parti-di-monografia">Parti di monografia</h2>
+<ul>
+<li><span class="citation" data-cites="lazzarini2025e"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>Trame, caso e
+provvidenza. Ancora sulla storia redazionale delle <span>«Gare de’
+disperati»</span> di G. A. Marini</em>, in <em>Regni di carta. Modelli
+politici e rappresentazione del potere nel romanzo ligure e veneto del
+Seicento</em>, a cura di <span class="smallcaps">Marianna
+Liguori</span>, <span class="smallcaps">Alessandro
+Metlica</span>Edizioni di Storia e Letteratura, 2025, p.
+i.c.s.</span></li>
+<li><span class="citation" data-cites="lazzarini2024a"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>Tommaso Stigliani critico
+del romanzo barocco. Una sonettessa sul <span>«Cretideo»</span></em>, in
+<em>Dal Barocco a Manzoni. Percorsi della narrativa tra Sei e
+Ottocento</em>, a cura di <span class="smallcaps">Luca Beltrami</span>,
+<span class="smallcaps">Matteo Navone</span>, <span
+class="smallcaps">Giordano Rodda</span>, Pisa, ETS, 2024, pp.
+231-242</span></li>
+<li><span class="citation" data-cites="lazzarini2023e"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>«Questo umano affetto e
+desiderio di viver dopo la morte». Intermittenze della volontà
+d’archivio in Alessandro Tassoni</em>, in <em>Volontà d’archivio.
+L’autore, le carte, l’opera</em>, a cura di <span
+class="smallcaps">Paola Italia</span>, <span class="smallcaps">Monica
+Zanardo</span>, Roma, Viella, 2023, pp. 317-331</span></li>
+<li><span class="citation" data-cites="lazzarini2023d"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>Figure «armoniche» e
+«d’ingegno». Intorno a una questione di poetica secentesca</em>, in
+<em>La musica della poesia. Il suono e il senso nella lirica europea
+(1100-1600)</em>, a cura di <span class="smallcaps">Francesco
+Carapezza</span>, Pisa, Pacini, 2023, pp. 209-230</span></li>
+<li><span class="citation" data-cites="lazzarini2023c"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>Basile petrarchista.
+Conservatorismo letterario e sperimentazione linguistica nella napoli
+<span>«oziosa»</span></em>, in <em>Barocco meridiano. Studi per Gino
+Rizzo</em>, a cura di <span class="smallcaps">Pasquale
+Guaragnella</span> et al., Lecce, Argo, 2023, pp. 141-165</span></li>
+<li><span class="citation" data-cites="lazzarini2021d"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>Appunti su astronomia e
+astrologia nella produzione burlesca di Francesco Bracciolini. Atti
+delle sessioni parallele del XXIII Congresso dell’ADI (Associazione
+degli Italianisti), Pisa, 12-14 settembre 2019</em>, in, a cura di <span
+class="smallcaps">Alberto Casadei</span> et al., Roma, Adi editore,
+2021</span></li>
+<li><span class="citation" data-cites="lazzarini2021a"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>Un postillato giovanile
+di Alessandro Tassoni: l’<span>«Ercolano»</span> di Varchi</em>, in
+<em>Alessandro Tassoni e il poema eroicomico. Atti del convegno di
+Padova, 6-7 giugno 2019</em>, a cura di <span class="smallcaps">Stefano
+Fortin</span>, <span class="smallcaps">Elisabetta Selmi</span>, <span
+class="smallcaps">Francesco Roncen</span>, Lecce, Argo, 2021, pp.
+207-235</span></li>
+<li><span class="citation" data-cites="lazzarini2021b"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>Deconstructing Petrarch.
+Alessandro Tassoni’s Considerazioni sopra le Rime del Petrarca and its
+textual history</em>, in <em>Interpreting and Judging Petrarch’s
+Canzoniere in Early Modern Italy (16th-18th Centuries)</em>, a cura di
+<span class="smallcaps">Maiko Favaro</span>, Oxford, Legenda, 2021, pp.
+117-135</span></li>
+<li><span class="citation" data-cites="lazzarini2020g"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>Cortese dopo Cortese.
+Bartolomeo Zito commentatore della <span>«Vaiasseide»</span></em>, in
+<em>La letteratura dialettale a Napoli. Testi, problemi,
+prospettive</em>, a cura di <span class="smallcaps">Salvatore
+Iacolare</span>, <span class="smallcaps">Giuseppe Andrea Liberti</span>,
+Firenze, Cesati, 2020, pp. 17-39</span></li>
+<li><span class="citation" data-cites="lazzarini2020c"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>La «maraviglia» e il
+«riso». Reazioni primo-seicentesche alle metafore
+<span>«sregolate»</span></em>, in <em>La misura del disordine. Miraggi e
+disincanti nella poesia barocca europea</em>, a cura di <span
+class="smallcaps">Carmen Gallo</span>, Pisa, Pacini, 2020, pp.
+131-158</span></li>
+<li><span class="citation" data-cites="lazzarini2020d"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>Un caso di esegesi
+burlesca nella Roma dei Barberini. Il Comento sopra i versi di Cecco
+Antonio</em>, in <em>Francesco Bracciolini. Gli <span>«Ozi»</span> e la
+corte</em>, a cura di <span class="smallcaps">Federico Contini</span>,
+<span class="smallcaps">Andrea Lazzarini</span>, Pisa, Pisa University
+Press, 2020, pp. 107-175</span></li>
+<li><span class="citation" data-cites="lazzarini2018a"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>Appunti sulla ricezione
+italiana di Ausiàs March. Prima e dopo le Considerazioni di Alessandro
+Tassoni</em>, in <em>Ausiàs March e il Canone europeo</em>, a cura di
+<span class="smallcaps">Benedetta Aldinucci</span>, <span
+class="smallcaps">Cèlia Nadal Pasqual</span>, Alessandria, Edizioni
+dell’Orso, 2018, pp. 217-249</span></li>
+<li><span class="citation" data-cites="lazzarini2017b"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>Attorno alle
+<span>«Considerazioni sopra le Rime del Petrarca»</span></em>, in
+<em>Alessandro Tassoni. Poeta, erudito, diplomatico nell’Europa dell’Età
+Moderna</em>, a cura di <span class="smallcaps">Maria Cristina
+Cabani</span>, <span class="smallcaps">Duccio Tongiorgi</span>, Modena,
+Franco Cosimo Panini, 2017, pp. 121-138</span></li>
+<li><span class="citation" data-cites="lazzarini2016c"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>Canto VII</em>, in
+<em>Lettura della Secchia rapita</em>, a cura di <span
+class="smallcaps">Davide Conrieri</span>, <span
+class="smallcaps">Pasquale Guaragnella</span>, Lecce, Argo, 2016, pp.
+89-105</span></li>
+<li><span class="citation" data-cites="lazzarini2012b"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>4. Le fonti su Massimo
+Stanzione, intorno all’Accademia degli Oziosi <em>e</em> 5. Il Ms. XIV E
+10. (con edizione critica del <span>«Manoscritto Stanzione»</span>,
+Napoli, Biblioteca Nazionale Vittorio Emanuele III, XIV E 10)</em>, in
+<span class="smallcaps">Floriana Conte</span>, <em>Tra Napoli e Milano.
+Viaggi di artisti nell’Italia del Seicento. 1. Da Tanzio da Varallo a
+Massimo Stanzione</em>, Firenze, Edifir, 2012, pp. 306-398</span></li>
+<li><span class="citation" data-cites="contelazzarini2012a"><span
+class="smallcaps">Floriana Conte</span>, <span class="smallcaps">Andrea
+Lazzarini</span>, <em>Proposte per Massimo Stanzione (e una premessa su
+Salvator Rosa): 1. La cronologia, le iconografie, i committenti; 2. Le
+fonti</em>, in <em>La pittura italiana del Seicento all’Ermitage. Atti
+del convegno internazionale (Roma, Palazzo Barberini, 19-20 ottobre
+2011)</em>, a cura di <span class="smallcaps">Francesca
+Cappelletti</span>, <span class="smallcaps">Irina Artemieva</span>,
+Firenze, EDIFIR, 2012, pp. 185-226 [Lazzarini: 207-215, note
+57-97]</span></li>
+</ul>
+<h2 id="voci-di-enciclopedia">Voci di enciclopedia</h2>
+<ul>
+<li><span class="citation" data-cites="lazzarini2019a"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>Tassoni, Alessandro</em>,
+in <em>Dizionario Biografico degli Italiani</em>, Roma, Istituto della
+Enciclopedia Italiana, 2019, vol. XCV, pp. 150-156</span></li>
+<li><span class="citation" data-cites="lazzarini2023b"><span
+class="smallcaps">Andrea Lazzarini</span>, <em>Stigliani, Tommaso</em>,
+in <em>Dizionario Biografico degli Italiani</em>, Roma, Istituto della
+Enciclopedia Italiana, 2019 [2023], vol. XCIV</span></li>
+</ul>
+</main>
+<footer>
+  <p>Andrea Lazzarini · Università degli Studi di Genova, DIRAAS ·
+  <a href="mailto:andrea.lazzarini@unige.it">andrea.lazzarini@unige.it</a></p>
+</footer>
+</body>
+</html>
