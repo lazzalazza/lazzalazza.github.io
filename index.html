@@ -125,21 +125,60 @@
              border-top: 1px solid var(--rule);
              font-size: 0.78rem; color: var(--gray-light);
              font-family: var(--font-sans); }
-    /* Responsive */
+    /* Nav: brand e toggle nascosti su desktop (visibili solo su mobile) */
+    .nav-brand { display: none; }
+    .nav-toggle {
+      display: none;
+      background: none; border: none; color: #fff;
+      cursor: pointer; padding: 0.55rem 0.8rem;
+      border-radius: 3px; line-height: 0;
+      transition: background 0.15s;
+    }
+    .nav-toggle:hover { background: rgba(255,255,255,0.12); }
+    /* Nav hamburger: tablet e mobile ≤ 800px */
+    @media (max-width: 800px) {
+      nav {
+        overflow: visible;      /* il dropdown può sforare l'altezza della barra */
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 0 0.3rem;
+      }
+      .nav-brand {
+        display: block; color: #fff;
+        font-family: var(--font-sans); font-size: 0.82rem;
+        font-weight: 600; letter-spacing: 0.04em;
+        padding: 0.72rem 0.6rem; white-space: nowrap;
+      }
+      .nav-toggle { display: flex; }
+      nav ul {
+        display: none; flex-direction: column; flex-wrap: nowrap;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: var(--blue);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.22);
+        z-index: 200; min-width: 0; justify-content: flex-start;
+      }
+      nav.nav-open ul { display: flex; }
+      nav ul li { width: 100%; }
+      nav ul li + li { border-left: none; border-top: 1px solid rgba(255,255,255,0.1); }
+      nav ul li a { padding: 0.85rem 1.4rem; font-size: 0.82rem; }
+    }
+    /* Responsive fine (≤ 600px) */
     @media (max-width: 600px) {
       html { font-size: 15px; }
       .cv-header { flex-direction: column-reverse; align-items: center; text-align: center; }
       dt { float: none; width: auto; margin-bottom: 0.1rem; }
       dd { margin-left: 0; padding-left: 0.8rem;
            border-left: 2px solid var(--rule); margin-bottom: 1rem; }
-      nav ul { justify-content: flex-start; } /* su mobile scorre da sinistra */
     }
 
   </style>
 </head>
 <body>
-<nav>
-  <ul>
+<nav id="site-nav">
+  <span class="nav-brand">Andrea Lazzarini</span>
+  <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="nav-menu">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+  </button>
+  <ul id="nav-menu">
     <li><a href="#posizione">Posizione</a></li>
     <li><a href="#progetti-finanziati-in-seguito-a-peer-evaluation">Progetti finanziati in seguito a peer evaluation</a></li>
     <li><a href="#presentazione">Presentazione</a></li>
@@ -585,5 +624,31 @@ Enciclopedia Italiana, 2019 [2023], vol. XCIV</span></li>
   <p>Andrea Lazzarini · Università degli Studi di Genova, DIRAAS ·
   <a href="mailto:andrea.lazzarini@unige.it">andrea.lazzarini@unige.it</a></p>
 </footer>
+<script>(function () {
+  var nav    = document.getElementById('site-nav');
+  var toggle = nav && nav.querySelector('.nav-toggle');
+  if (!nav || !toggle) return;
+  var SVG_H = toggle.innerHTML;
+  var SVG_X = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+  function setOpen(open) {
+    nav.classList.toggle('nav-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.innerHTML = open ? SVG_X : SVG_H;
+    toggle.setAttribute('aria-label', open ? 'Chiudi menu' : 'Apri menu');
+  }
+  toggle.addEventListener('click', function (e) {
+    e.stopPropagation();
+    setOpen(!nav.classList.contains('nav-open'));
+  });
+  nav.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () { setOpen(false); });
+  });
+  document.addEventListener('click', function (e) {
+    if (nav.classList.contains('nav-open') && !nav.contains(e.target)) setOpen(false);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && nav.classList.contains('nav-open')) { setOpen(false); toggle.focus(); }
+  });
+}());</script>
 </body>
 </html>
