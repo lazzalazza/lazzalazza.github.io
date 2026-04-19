@@ -129,26 +129,33 @@
     /* Misc */
     .smallcaps { font-variant: small-caps; }
     /* ── Sezioni collassabili (<details>/<summary>) ───────────────────────── */
+    /* Il summary diventa un flex container: l'<h1> sta a sinistra, il marker
+       +/− è un flex item accanto, sempre allineato sulla baseline del titolo
+       (non rischia di finire dentro il testo della sezione). I bordi e i
+       margini che erano sull'h1 si spostano sul summary, così il bordo passa
+       sotto sia il titolo che il marker. */
     .cv-section { margin: 0; }
     .cv-section > summary {
-      list-style: none; cursor: pointer;
-      display: block; position: relative; outline: none;
+      list-style: none; cursor: pointer; outline: none;
+      display: flex; align-items: baseline; justify-content: space-between;
+      margin: 3rem 0 0.5rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid var(--rule);
     }
     .cv-section > summary::-webkit-details-marker { display: none; }
+    .cv-section > summary > h1 {
+      margin: 0; padding-bottom: 0; border-bottom: none; flex: 1;
+    }
     .cv-section > summary::after {
       content: "−";
-      position: absolute; right: 0;
-      top: 3.05rem;                  /* allinea con il margine superiore di h1 */
       color: var(--gray-light);
       font-family: var(--font-sans);
-      font-size: 1.3rem; font-weight: 300; line-height: 1;
-      transition: color 0.15s; user-select: none;
+      font-size: 1.2rem; font-weight: 300; line-height: 1;
+      margin-left: 1rem; flex: 0 0 auto;
+      user-select: none; transition: color 0.15s;
     }
     .cv-section:not([open]) > summary::after { content: "+"; }
     .cv-section > summary:hover::after { color: var(--blue-mid); }
-    .cv-section > summary > h1 { padding-right: 1.5rem; }
-    /* Quando il browser non supporta <details>, mostra comunque tutto */
-    .cv-section[open], .cv-section { display: block; }
 
     /* ── Pubblicazioni: più aria fra le voci, più scansione visiva ────────── */
     [data-section="pubblicazioni"] ul li {
