@@ -163,15 +163,54 @@
     .cv-section:not([open]) > summary::after { content: "+"; }
     .cv-section > summary:hover::after { color: var(--blue-mid); }
 
-    /* ── Pubblicazioni: titolo in evidenza, dettagli in corpo più piccolo ─── */
+    /* ── Pubblicazioni: gerarchia 3 livelli (sezione › sottosezione › voce) ─ */
+    /* Voci: spaziatura compatta quando chiuse, un po' più aria quando aperte */
     [data-section="pubblicazioni"] ul li {
-      margin-bottom: 1.3rem;
+      margin-bottom: 0.45rem;
       padding-left: 1.4rem;
     }
-    [data-section="pubblicazioni"] h2 {
-      margin-top: 2.2rem;
-      font-size: 0.95rem;
+    [data-section="pubblicazioni"] li:has(details[open]) {
+      margin-bottom: 0.95rem;
     }
+    /* Sottosezioni (Monografie, Curatele, Articoli, ecc.): header etichetta
+       maiuscoletto sans, separatore in alto, marcatore +/− a destra. */
+    details.pub-subsection {
+      margin: 1.4rem 0 0;
+      border-top: 1px solid var(--rule);
+      padding-top: 0.7rem;
+    }
+    details.pub-subsection:first-of-type {
+      margin-top: 0.6rem;
+      border-top: none;
+      padding-top: 0;
+    }
+    details.pub-subsection > summary {
+      list-style: none; cursor: pointer; outline: none;
+      display: flex; align-items: baseline; justify-content: space-between;
+      margin-bottom: 0.6rem;
+    }
+    details.pub-subsection > summary::-webkit-details-marker { display: none; }
+    details.pub-subsection > summary > h2 {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: 0.78rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--blue);
+      flex: 1;
+    }
+    details.pub-subsection > summary::after {
+      content: "−";
+      color: var(--gray-light);
+      font-family: var(--font-sans);
+      font-size: 1.1rem; font-weight: 300; line-height: 1;
+      margin-left: 1rem;
+      transition: color 0.15s;
+    }
+    details.pub-subsection:not([open]) > summary::after { content: "+"; }
+    details.pub-subsection > summary:hover::after { color: var(--blue-mid); }
+    details.pub-subsection > summary:hover > h2 { color: var(--blue-mid); }
+    /* Toglie il margine ul/h2 vecchio che faceva il "buco" sotto l'header */
+    details.pub-subsection > ul { margin-top: 0.2rem; }
     /* Ogni voce bibliografica è un <details class="pub-entry"> annidato:
        il <summary> contiene il blocco titolo (sempre visibile), il blocco
        dettagli (rivista, vol., anno, pp., DOI/URL) compare al click. */
@@ -552,8 +591,8 @@ antropologia, medicina</em>
 <details class="cv-section" data-section="pubblicazioni">
 <summary><h1 id="pubblicazioni">Pubblicazioni</h1></summary>
 
-<h2 id="monografie-e-edizioni-critiche">Monografie e edizioni
-critiche</h2>
+<details open class="pub-subsection"><summary><h2 id="monografie-e-edizioni-critiche">Monografie e edizioni
+critiche</h2></summary>
 <ul>
 <li><span class="smallcaps">Alessandro Tassoni</span>, <em>La secchia
 rapita</em>, edizione commentata (con <span class="smallcaps">Maria
@@ -572,7 +611,7 @@ class="csl-block"><span class="smallcaps">Giulio Cesare Cortese</span>,
 <em>La Rosa. Favola</em></div></summary><div class="csl-block">a cura di Andrea
 Lazzarini, Lucca, Pacini Fazzi, 2018</div></details></span></li>
 </ul>
-<h2 id="curatele">Curatele</h2>
+</details><details open class="pub-subsection"><summary><h2 id="curatele">Curatele</h2></summary>
 <ul>
 <li>(Insieme a <span class="smallcaps">Duccio Tongiorgi</span>) –
 Sezione di articoli su De Roberto in «Rassegna Europea della Letteratura
@@ -583,7 +622,7 @@ class="smallcaps">Andrea Lazzarini</span> (a cura di), <em>Francesco
 Bracciolini. Gli <span>«Ozi»</span> e la corte</em></div></summary><div
 class="csl-block">Pisa, Pisa University Press, 2020</div></details></span></li>
 </ul>
-<h2 id="articoli-in-rivista">Articoli in rivista</h2>
+</details><details open class="pub-subsection"><summary><h2 id="articoli-in-rivista">Articoli in rivista</h2></summary>
 <ul>
 <li><span class="citation" data-cites="lazzarini2025a"><details class="pub-entry"><summary><div
 class="csl-block"><em>Ritratti di un falsario. Finzioni e fantasmi
@@ -695,7 +734,7 @@ libri di disegno in una dichiarazione di poetica
 mariniana</em></div></summary><div class="csl-block">«Italianistica», XL, 2011,
 pp. 73-85</div></details></span></li>
 </ul>
-<h2 id="parti-di-monografia">Parti di monografia</h2>
+</details><details open class="pub-subsection"><summary><h2 id="parti-di-monografia">Parti di monografia</h2></summary>
 <ul>
 <li><span class="citation" data-cites="lazzarini2026a"><details class="pub-entry"><summary><div
 class="csl-block"><em>Trame, caso e provvidenza. Ancora sulla storia
@@ -826,7 +865,7 @@ Cappelletti</span>, <span class="smallcaps">Irina Artemieva</span>,
 Firenze, EDIFIR, 2012, pp. 185-226 [Lazzarini: 207-215, note
 57-97]</div></details></span></li>
 </ul>
-<h2 id="voci-di-enciclopedia">Voci di enciclopedia</h2>
+</details><details open class="pub-subsection"><summary><h2 id="voci-di-enciclopedia">Voci di enciclopedia</h2></summary>
 <ul>
 <li><span class="citation" data-cites="lazzarini2019a"><details class="pub-entry"><summary><div
 class="csl-block"><em>Tassoni, Alessandro</em></div></summary><div
@@ -841,7 +880,7 @@ class="csl-block">in <em>Dizionario Biografico degli Italiani</em>,
 Roma, Istituto della Enciclopedia Italiana, 2019, vol. XCIV, URL: <a
 href="https://www.treccani.it/enciclopedia/bio-stigliani-tommaso-tomaso_%28Dizionario-Biografico%29/"
 role="doc-biblioref">https://www.treccani.it/enciclopedia/bio-stigliani-tommaso-tomaso_%28Dizionario-Biografico%29/</a></div></details></span></li>
-</ul></details>
+</ul></details></details>
 
 </main>
 <footer>
