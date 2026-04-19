@@ -166,22 +166,40 @@
       margin-top: 2.2rem;
       font-size: 0.95rem;
     }
-    /* citeproc-hs emette <div class="csl-block"> per ogni elemento con
-       display="block" nel CSL: il primo blocco è il titolo, il secondo i
-       dati bibliografici (rivista, volume, anno, pagine, DOI/URL, ecc.). */
-    [data-section="pubblicazioni"] .csl-block:first-child {
+    /* Ogni voce bibliografica è un <details class="pub-entry"> annidato:
+       il <summary> contiene il blocco titolo (sempre visibile), il blocco
+       dettagli (rivista, vol., anno, pp., DOI/URL) compare al click. */
+    [data-section="pubblicazioni"] details.pub-entry {
+      margin: 0;
+    }
+    [data-section="pubblicazioni"] details.pub-entry > summary {
+      list-style: none;
+      cursor: pointer;
+      outline: none;
+      display: inline;             /* il blocco è già il titolo csl-block */
+    }
+    [data-section="pubblicazioni"] details.pub-entry > summary::-webkit-details-marker {
+      display: none;
+    }
+    /* Stile del titolo (è il csl-block dentro il summary) */
+    [data-section="pubblicazioni"] details.pub-entry > summary > .csl-block {
       font-size: 1.02rem;
       line-height: 1.45;
       color: var(--text);
       margin-bottom: 0.15rem;
+      transition: color 0.15s;
     }
-    [data-section="pubblicazioni"] .csl-block + .csl-block {
+    [data-section="pubblicazioni"] details.pub-entry > summary:hover > .csl-block {
+      color: var(--blue);
+    }
+    /* Stile dei dettagli (csl-block subito dopo il summary) */
+    [data-section="pubblicazioni"] details.pub-entry > .csl-block {
       font-size: 0.86rem;
       line-height: 1.55;
       color: var(--gray);
+      margin-top: 0.15rem;
     }
-    /* Anche i link nei dettagli ereditano la dimensione ridotta */
-    [data-section="pubblicazioni"] .csl-block + .csl-block a {
+    [data-section="pubblicazioni"] details.pub-entry > .csl-block a {
       color: var(--blue-mid);
     }
 
@@ -535,288 +553,288 @@ critiche</h2>
 rapita</em>, edizione commentata (con <span class="smallcaps">Maria
 Cristina Cabani</span> e <span class="smallcaps">Ottavio Besomi</span>).
 Di prossima uscita nella collana della Fondazione Bembo (2027).</li>
-<li><span class="citation" data-cites="lazzarini2021c"><div
+<li><span class="citation" data-cites="lazzarini2021c"><details class="pub-entry"><summary><div
 class="csl-block"><em>I fiscali del Diavolo. Muratori, Fontanini e
-Castelvetro</em></div><div class="csl-block">Pisa, ETS,
-2021</div></span></li>
-<li><span class="citation" data-cites="lazzarini2020a"><div
+Castelvetro</em></div></summary><div class="csl-block">Pisa, ETS,
+2021</div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2020a"><details class="pub-entry"><summary><div
 class="csl-block"><em>«Pazza cosa sarebbe la poesia». Alessandro Tassoni
-lettore del Trecento fra Barocco ed Età Muratoriana</em></div><div
-class="csl-block">Modena, Franco Cosimo Panini, 2020</div></span></li>
-<li><span class="citation" data-cites="cortese2018a"><div
+lettore del Trecento fra Barocco ed Età Muratoriana</em></div></summary><div
+class="csl-block">Modena, Franco Cosimo Panini, 2020</div></details></span></li>
+<li><span class="citation" data-cites="cortese2018a"><details class="pub-entry"><summary><div
 class="csl-block"><span class="smallcaps">Giulio Cesare Cortese</span>,
-<em>La Rosa. Favola</em></div><div class="csl-block">a cura di Andrea
-Lazzarini, Lucca, Pacini Fazzi, 2018</div></span></li>
+<em>La Rosa. Favola</em></div></summary><div class="csl-block">a cura di Andrea
+Lazzarini, Lucca, Pacini Fazzi, 2018</div></details></span></li>
 </ul>
 <h2 id="curatele">Curatele</h2>
 <ul>
 <li>(Insieme a <span class="smallcaps">Duccio Tongiorgi</span>) –
 Sezione di articoli su De Roberto in «Rassegna Europea della Letteratura
 Italiana» (3, 2023)</li>
-<li><span class="citation" data-cites="continilazzarini2020a"><div
+<li><span class="citation" data-cites="continilazzarini2020a"><details class="pub-entry"><summary><div
 class="csl-block"><span class="smallcaps">Federico Contini</span>, <span
 class="smallcaps">Andrea Lazzarini</span> (a cura di), <em>Francesco
-Bracciolini. Gli <span>«Ozi»</span> e la corte</em></div><div
-class="csl-block">Pisa, Pisa University Press, 2020</div></span></li>
+Bracciolini. Gli <span>«Ozi»</span> e la corte</em></div></summary><div
+class="csl-block">Pisa, Pisa University Press, 2020</div></details></span></li>
 </ul>
 <h2 id="articoli-in-rivista">Articoli in rivista</h2>
 <ul>
-<li><span class="citation" data-cites="lazzarini2025a"><div
+<li><span class="citation" data-cites="lazzarini2025a"><details class="pub-entry"><summary><div
 class="csl-block"><em>Ritratti di un falsario. Finzioni e fantasmi
-bibliografici nel libro di lettere di Tommaso Stigliani</em></div><div
+bibliografici nel libro di lettere di Tommaso Stigliani</em></div></summary><div
 class="csl-block">«Studi secenteschi», LXVI, 2025, pp.
-113-147</div></span></li>
-<li><span class="citation" data-cites="lazzarini2025b"><div
+113-147</div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2025b"><details class="pub-entry"><summary><div
 class="csl-block"><em>Non è poi così grave. Sul titolo dei Viceré di
-Federico De Roberto</em></div><div class="csl-block">«Esperienze
+Federico De Roberto</em></div></summary><div class="csl-block">«Esperienze
 letterarie», L, 2025, fasc. 1, pp. 99-108, DOI: <a
 href="https://doi.org/10.19272/202507901006"
-role="doc-biblioref">10.19272/202507901006</a></div></span></li>
-<li><span class="citation" data-cites="lazzarini2025c"><div
-class="csl-block"><em>Varietà pinocchiesca</em></div><div
+role="doc-biblioref">10.19272/202507901006</a></div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2025c"><details class="pub-entry"><summary><div
+class="csl-block"><em>Varietà pinocchiesca</em></div></summary><div
 class="csl-block">«Oblio», XV, 2025, fasc. 51, pp. 180-192, URL: <a
 href="https://www.progettoblio.com/wp-content/uploads/2025/06/16.-Lazzarini-Varieta-pinocchiesca.pdf"
-role="doc-biblioref">https://www.progettoblio.com/wp-content/uploads/2025/06/16.-Lazzarini-Varieta-pinocchiesca.pdf</a></div></span></li>
-<li><span class="citation" data-cites="lazzarini2024c"><div
+role="doc-biblioref">https://www.progettoblio.com/wp-content/uploads/2025/06/16.-Lazzarini-Varieta-pinocchiesca.pdf</a></div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2024c"><details class="pub-entry"><summary><div
 class="csl-block"><em>Vite «curiose, ben intrecciate e improvisamente
 disciolte». Sulla <span>«Settimana Santa ben avventurosamente
-sfuggita»</span> di Giovanni Ambrosio Marini</em></div><div
-class="csl-block">«Generi», II, 2024, pp. 147-162</div></span></li>
-<li><span class="citation" data-cites="lazzarini2024d"><div
+sfuggita»</span> di Giovanni Ambrosio Marini</em></div></summary><div
+class="csl-block">«Generi», II, 2024, pp. 147-162</div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2024d"><details class="pub-entry"><summary><div
 class="csl-block"><em>Un ritrovato esemplare della <span>«Schiavitudine
 mondana ridotta in libertà»</span> di Giovanni Ambrosio
-Marini</em></div><div class="csl-block">«Studi secenteschi», LXV, 2024,
-pp. 366-371</div></span></li>
-<li><span class="citation" data-cites="lazzarini2023a"><div
+Marini</em></div></summary><div class="csl-block">«Studi secenteschi», LXV, 2024,
+pp. 366-371</div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2023a"><details class="pub-entry"><summary><div
 class="csl-block"><em>«Tutto si paga». I <span>«Viceré»</span> e la
-degenerazione</em></div><div class="csl-block">«Rassegna Europea della
-Letteratura Italiana», LXIII–LXIV, 2024, pp. 91-121</div></span></li>
-<li><span class="citation" data-cites="lazzarinitongiorgi2023a"><div
+degenerazione</em></div></summary><div class="csl-block">«Rassegna Europea della
+Letteratura Italiana», LXIII–LXIV, 2024, pp. 91-121</div></details></span></li>
+<li><span class="citation" data-cites="lazzarinitongiorgi2023a"><details class="pub-entry"><summary><div
 class="csl-block"><span class="smallcaps">Andrea Lazzarini</span>, <span
 class="smallcaps">Duccio Tongiorgi</span>, <em>Letture dei
-«Viceré»</em></div><div class="csl-block">«Rassegna Europea della
-Letteratura Italiana», 2023, pp. 11-15</div></span></li>
-<li><span class="citation" data-cites="lazzarini2022b"><div
+«Viceré»</em></div></summary><div class="csl-block">«Rassegna Europea della
+Letteratura Italiana», 2023, pp. 11-15</div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2022b"><details class="pub-entry"><summary><div
 class="csl-block"><em>Paradigma testuale, paradigma indiziario. Aspetti
 del lascito della critica stilistica sulla teoria di Francesco
-Orlando</em></div><div class="csl-block">«L’Ulisse», XXV, 2022, pp.
+Orlando</em></div></summary><div class="csl-block">«L’Ulisse», XXV, 2022, pp.
 37-48, URL: <a
 href="https://rivistaulisse.wordpress.com/2022/12/29/lulisse-25-stili-della-poesia-contemporanea/"
-role="doc-biblioref">https://rivistaulisse.wordpress.com/2022/12/29/lulisse-25-stili-della-poesia-contemporanea/</a></div></span></li>
-<li><span class="citation" data-cites="lazzarini2022a"><div
+role="doc-biblioref">https://rivistaulisse.wordpress.com/2022/12/29/lulisse-25-stili-della-poesia-contemporanea/</a></div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2022a"><details class="pub-entry"><summary><div
 class="csl-block"><em>«L’amore c’è soltanto nel titolo». Gli Amori di
-Federico De Roberto tra Bourget e Lombroso</em></div><div
+Federico De Roberto tra Bourget e Lombroso</em></div></summary><div
 class="csl-block">«Oblio», XII, 2022, pp. 135-157, URL: <a
 href="https://www.progettoblio.com/wp-content/uploads/2022/06/18-Lazzarini-%C2%BDLamore-c%C2%BF-soltanto-nel-titolo-.pdf"
-role="doc-biblioref">https://www.progettoblio.com/wp-content/uploads/2022/06/18-Lazzarini-%C2%BDLamore-c%C2%BF-soltanto-nel-titolo-.pdf</a></div></span></li>
-<li><span class="citation" data-cites="lazzarini2020f"><div
+role="doc-biblioref">https://www.progettoblio.com/wp-content/uploads/2022/06/18-Lazzarini-%C2%BDLamore-c%C2%BF-soltanto-nel-titolo-.pdf</a></div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2020f"><details class="pub-entry"><summary><div
 class="csl-block"><em>Gli autografi delle lettere di Alessandro Tassoni
 ad Albertino Barisoni. Osservazioni filologiche
-preliminari</em></div><div class="csl-block">«Nuova Rivista di
+preliminari</em></div></summary><div class="csl-block">«Nuova Rivista di
 Letteratura Italiana», XXIII, 2020, pp. 127-148, DOI: <a
 href="https://doi.org/10.4454/nrli.v23i2.366"
-role="doc-biblioref">10.4454/nrli.v23i2.366</a></div></span></li>
-<li><span class="citation" data-cites="lazzarini2020b"><div
+role="doc-biblioref">10.4454/nrli.v23i2.366</a></div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2020b"><details class="pub-entry"><summary><div
 class="csl-block"><em>Tra Aristotele e Alberti. Poesia e arti figurative
-nella <span>«Poetica»</span> di Lodovico Castelvetro</em></div><div
+nella <span>«Poetica»</span> di Lodovico Castelvetro</em></div></summary><div
 class="csl-block">«Giornale Storico della Letteratura Italiana», CXCVII,
-2020, pp. 101-120</div></span></li>
-<li><span class="citation" data-cites="lazzarini2019b"><div
+2020, pp. 101-120</div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2019b"><details class="pub-entry"><summary><div
 class="csl-block"><em>Laura, Francesco e Tassoni. Una critica secentesca
-agli amori di Petrarca</em></div><div
+agli amori di Petrarca</em></div></summary><div
 class="csl-block">«Griseldaonline», XVIII, 2019, fasc. 2, pp. 45-62,
 URL: <a href="https://doi.org/10.6092/issn.1721-4777/9865"
-role="doc-biblioref">https://doi.org/10.6092/issn.1721-4777/9865</a></div></span></li>
-<li><span class="citation" data-cites="lazzarini2017c"><div
+role="doc-biblioref">https://doi.org/10.6092/issn.1721-4777/9865</a></div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2017c"><details class="pub-entry"><summary><div
 class="csl-block"><em><span>«Il fiore della granadiglia»</span>. Una
 raccolta poetica del primo Seicento e il suo contesto
-europeo</em></div><div class="csl-block">«Annali della Scuola Normale
-Superiore di Pisa», IX, 2017, pp. 101-125, 303-308</div></span></li>
-<li><span class="citation" data-cites="lazzarini2016a"><div
+europeo</em></div></summary><div class="csl-block">«Annali della Scuola Normale
+Superiore di Pisa», IX, 2017, pp. 101-125, 303-308</div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2016a"><details class="pub-entry"><summary><div
 class="csl-block"><em>Ancora sui rapporti tra letteratura dialettale
 riflessa e toscano: una dedicatoria di G. C. Cortese a G. B.
-Basile</em></div><div class="csl-block">«Studi secenteschi», LVII, 2016,
-pp. 159-183</div></span></li>
-<li><span class="citation" data-cites="lazzarini2016b"><div
+Basile</em></div></summary><div class="csl-block">«Studi secenteschi», LVII, 2016,
+pp. 159-183</div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2016b"><details class="pub-entry"><summary><div
 class="csl-block"><em>Due esemplari ignoti delle Opere Burlesche di
-Giulio Cesare Cortese</em></div><div class="csl-block">«Studi
-secenteschi», LXVII, 2016, pp. 324-334</div></span></li>
-<li><span class="citation" data-cites="lazzarini2014a"><div
+Giulio Cesare Cortese</em></div></summary><div class="csl-block">«Studi
+secenteschi», LXVII, 2016, pp. 324-334</div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2014a"><details class="pub-entry"><summary><div
 class="csl-block"><em>Poesia eroicomica e satira poetica: Tassoni,
-Bracciolini, Marino</em></div><div class="csl-block">«Nuova Rivista di
-Letteratura Italiana», XVII, 2014, pp. 107-147</div></span></li>
-<li><span class="citation" data-cites="lazzarini2013a"><div
+Bracciolini, Marino</em></div></summary><div class="csl-block">«Nuova Rivista di
+Letteratura Italiana», XVII, 2014, pp. 107-147</div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2013a"><details class="pub-entry"><summary><div
 class="csl-block"><em>Il «Potta di Modena». Precisazioni
 storico-linguistiche attorno a un personaggio della Secchia rapita di
-Alessandro Tassoni</em></div><div class="csl-block">«Nuova Rivista di
-Letteratura Italiana», XVI, 2013, pp. 61-93</div></span></li>
-<li><span class="citation" data-cites="lazzarini2013c"><div
+Alessandro Tassoni</em></div></summary><div class="csl-block">«Nuova Rivista di
+Letteratura Italiana», XVI, 2013, pp. 61-93</div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2013c"><details class="pub-entry"><summary><div
 class="csl-block"><em>Materiali per <span>«Elegia di Pico
-Farnese»</span>. Fonti, modelli, incroci</em></div><div
+Farnese»</span>. Fonti, modelli, incroci</em></div></summary><div
 class="csl-block">«Italianistica», XLII, 2013, pp.
-11-33</div></span></li>
-<li><span class="citation" data-cites="lazzarini2013b"><div
+11-33</div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2013b"><details class="pub-entry"><summary><div
 class="csl-block"><em>Una polemica intorno al <span>«Pastor fido in
-lingua napolitana»</span> di Domenico Basile</em></div><div
+lingua napolitana»</span> di Domenico Basile</em></div></summary><div
 class="csl-block">«Studi secenteschi», LIV, 2013, pp.
-187-203</div></span></li>
-<li><span class="citation" data-cites="lazzarini2011b"><div
+187-203</div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2011b"><details class="pub-entry"><summary><div
 class="csl-block"><em>Ritratti, cortine, <span>«celesti arcani»</span>.
 Note su arte, sacralità e profano nell’<span>«Adone»</span> di G. B.
-Marino</em></div><div class="csl-block">«L’Ellisse», VI, 2011, pp.
-105-128</div></span></li>
-<li><span class="citation" data-cites="lazzarini2011a"><div
+Marino</em></div></summary><div class="csl-block">«L’Ellisse», VI, 2011, pp.
+105-128</div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2011a"><details class="pub-entry"><summary><div
 class="csl-block"><em>Una Testimonianza di Tommaso Stigliani. Palazzi e
 libri di disegno in una dichiarazione di poetica
-mariniana</em></div><div class="csl-block">«Italianistica», XL, 2011,
-pp. 73-85</div></span></li>
+mariniana</em></div></summary><div class="csl-block">«Italianistica», XL, 2011,
+pp. 73-85</div></details></span></li>
 </ul>
 <h2 id="parti-di-monografia">Parti di monografia</h2>
 <ul>
-<li><span class="citation" data-cites="lazzarini2026a"><div
+<li><span class="citation" data-cites="lazzarini2026a"><details class="pub-entry"><summary><div
 class="csl-block"><em>Trame, caso e provvidenza. Ancora sulla storia
 redazionale delle <span>«Gare de’ disperati»</span> di G. A.
-Marini</em></div><div class="csl-block">in <em>Regni di carta. Modelli
+Marini</em></div></summary><div class="csl-block">in <em>Regni di carta. Modelli
 politici e rappresentazione del potere nel romanzo ligure e veneto del
 Seicento</em>, a cura di <span class="smallcaps">Marianna
 Liguori</span>, <span class="smallcaps">Alessandro Metlica</span>, Roma,
-Edizioni di Storia e Letteratura, 2026, pp. 135-156</div></span></li>
-<li><span class="citation" data-cites="lazzarini2025d"><div
+Edizioni di Storia e Letteratura, 2026, pp. 135-156</div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2025d"><details class="pub-entry"><summary><div
 class="csl-block"><em>L’impossibilità dell’illusione. Intorno a
-Spasimo</em></div><div class="csl-block">in <em>Lo sperimentalismo
+Spasimo</em></div></summary><div class="csl-block">in <em>Lo sperimentalismo
 narrativo di Federico De Roberto</em>, a cura di <span
 class="smallcaps">Giovanni Maffei</span>, <span
 class="smallcaps">Concetta Maria Pagliuca</span>, Napoli, FedOAPress,
 2025, pp. 73-97, DOI: <a
 href="https://doi.org/10.6093/978-88-6887-367-7"
-role="doc-biblioref">10.6093/978-88-6887-367-7</a></div></span></li>
-<li><span class="citation" data-cites="lazzarini2024a"><div
+role="doc-biblioref">10.6093/978-88-6887-367-7</a></div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2024a"><details class="pub-entry"><summary><div
 class="csl-block"><em>Tommaso Stigliani critico del romanzo barocco. Una
-sonettessa sul <span>«Cretideo»</span></em></div><div
+sonettessa sul <span>«Cretideo»</span></em></div></summary><div
 class="csl-block">in <em>Dal Barocco a Manzoni. Percorsi della narrativa
 tra Sei e Ottocento</em>, a cura di <span class="smallcaps">Luca
 Beltrami</span>, <span class="smallcaps">Matteo Navone</span>, <span
 class="smallcaps">Giordano Rodda</span>, Pisa, ETS, 2024, pp.
-231-242</div></span></li>
-<li><span class="citation" data-cites="lazzarini2023e"><div
+231-242</div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2023e"><details class="pub-entry"><summary><div
 class="csl-block"><em>«Questo umano affetto e desiderio di viver dopo la
 morte». Intermittenze della volontà d’archivio in Alessandro
-Tassoni</em></div><div class="csl-block">in <em>Volontà d’archivio.
+Tassoni</em></div></summary><div class="csl-block">in <em>Volontà d’archivio.
 L’autore, le carte, l’opera</em>, a cura di <span
 class="smallcaps">Paola Italia</span>, <span class="smallcaps">Monica
-Zanardo</span>, Roma, Viella, 2023, pp. 317-331</div></span></li>
-<li><span class="citation" data-cites="lazzarini2023d"><div
+Zanardo</span>, Roma, Viella, 2023, pp. 317-331</div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2023d"><details class="pub-entry"><summary><div
 class="csl-block"><em>Figure «armoniche» e «d’ingegno». Intorno a una
-questione di poetica secentesca</em></div><div class="csl-block">in
+questione di poetica secentesca</em></div></summary><div class="csl-block">in
 <em>La musica della poesia. Il suono e il senso nella lirica europea
 (1100-1600)</em>, a cura di <span class="smallcaps">Francesco
-Carapezza</span>, Pisa, Pacini, 2023, pp. 209-230</div></span></li>
-<li><span class="citation" data-cites="lazzarini2023c"><div
+Carapezza</span>, Pisa, Pacini, 2023, pp. 209-230</div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2023c"><details class="pub-entry"><summary><div
 class="csl-block"><em>Basile petrarchista. Conservatorismo letterario e
 sperimentazione linguistica nella Napoli
-<span>«Oziosa»</span></em></div><div class="csl-block">in <em>Barocco
+<span>«Oziosa»</span></em></div></summary><div class="csl-block">in <em>Barocco
 meridiano. Studi per Gino Rizzo</em>, a cura di <span
 class="smallcaps">Pasquale Guaragnella</span> et al., Lecce, Argo, 2023,
-pp. 141-165</div></span></li>
-<li><span class="citation" data-cites="lazzarini2021d"><div
+pp. 141-165</div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2021d"><details class="pub-entry"><summary><div
 class="csl-block"><em>Appunti su astronomia e astrologia nella
-produzione burlesca di Francesco Bracciolini</em></div><div
+produzione burlesca di Francesco Bracciolini</em></div></summary><div
 class="csl-block">in <em>Letteratura e Scienze. Atti delle sessioni
 parallele del XXIII Congresso dell’ADI (Associazione degli Italianisti),
 Pisa, 12-14 settembre 2019</em>, a cura di <span
 class="smallcaps">Alberto Casadei</span> et al., Roma, Adi editore,
 2021, URL: <a
 href="https://www.italianisti.it/pubblicazioni/atti-di-congresso/letteratura-e-scienze"
-role="doc-biblioref">https://www.italianisti.it/pubblicazioni/atti-di-congresso/letteratura-e-scienze</a></div></span></li>
-<li><span class="citation" data-cites="lazzarini2021a"><div
+role="doc-biblioref">https://www.italianisti.it/pubblicazioni/atti-di-congresso/letteratura-e-scienze</a></div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2021a"><details class="pub-entry"><summary><div
 class="csl-block"><em>Un postillato giovanile di Alessandro Tassoni:
-l’<span>«Ercolano»</span> di Varchi</em></div><div class="csl-block">in
+l’<span>«Ercolano»</span> di Varchi</em></div></summary><div class="csl-block">in
 <em>Alessandro Tassoni e il poema eroicomico. Atti del convegno di
 Padova, 6-7 giugno 2019</em>, a cura di <span class="smallcaps">Stefano
 Fortin</span>, <span class="smallcaps">Elisabetta Selmi</span>, <span
 class="smallcaps">Francesco Roncen</span>, Lecce, Argo, 2021, pp.
-207-235</div></span></li>
-<li><span class="citation" data-cites="lazzarini2021b"><div
+207-235</div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2021b"><details class="pub-entry"><summary><div
 class="csl-block"><em>Deconstructing Petrarch. Alessandro Tassoni’s
 Considerazioni sopra le Rime del Petrarca and its textual
-history</em></div><div class="csl-block">in <em>Interpreting and Judging
+history</em></div></summary><div class="csl-block">in <em>Interpreting and Judging
 Petrarch’s Canzoniere in Early Modern Italy (16th-18th Centuries)</em>,
 a cura di <span class="smallcaps">Maiko Favaro</span>, Oxford, Legenda,
-2021, pp. 117-135</div></span></li>
-<li><span class="citation" data-cites="lazzarini2020g"><div
+2021, pp. 117-135</div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2020g"><details class="pub-entry"><summary><div
 class="csl-block"><em>Cortese dopo Cortese. Bartolomeo Zito commentatore
-della <span>«Vaiasseide»</span></em></div><div class="csl-block">in
+della <span>«Vaiasseide»</span></em></div></summary><div class="csl-block">in
 <em>La letteratura dialettale a Napoli. Testi, problemi,
 prospettive</em>, a cura di <span class="smallcaps">Salvatore
 Iacolare</span>, <span class="smallcaps">Giuseppe Andrea Liberti</span>,
-Firenze, Cesati, 2020, pp. 17-39</div></span></li>
-<li><span class="citation" data-cites="lazzarini2020c"><div
+Firenze, Cesati, 2020, pp. 17-39</div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2020c"><details class="pub-entry"><summary><div
 class="csl-block"><em>La «maraviglia» e il «riso». Reazioni
-primo-seicentesche alle metafore <span>«sregolate»</span></em></div><div
+primo-seicentesche alle metafore <span>«sregolate»</span></em></div></summary><div
 class="csl-block">in <em>La misura del disordine. Miraggi e disincanti
 nella poesia barocca europea</em>, a cura di <span
 class="smallcaps">Carmen Gallo</span>, Pisa, Pacini, 2020, pp.
-131-158</div></span></li>
-<li><span class="citation" data-cites="lazzarini2020d"><div
+131-158</div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2020d"><details class="pub-entry"><summary><div
 class="csl-block"><em>Un caso di esegesi burlesca nella Roma dei
-Barberini. Il Comento sopra i versi di Cecco Antonio</em></div><div
+Barberini. Il Comento sopra i versi di Cecco Antonio</em></div></summary><div
 class="csl-block">in <em>Francesco Bracciolini. Gli <span>«Ozi»</span> e
 la corte</em>, a cura di <span class="smallcaps">Federico
 Contini</span>, <span class="smallcaps">Andrea Lazzarini</span>, Pisa,
-Pisa University Press, 2020, pp. 107-175</div></span></li>
-<li><span class="citation" data-cites="lazzarini2018a"><div
+Pisa University Press, 2020, pp. 107-175</div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2018a"><details class="pub-entry"><summary><div
 class="csl-block"><em>Appunti sulla ricezione italiana di Ausiàs March.
-Prima e dopo le Considerazioni di Alessandro Tassoni</em></div><div
+Prima e dopo le Considerazioni di Alessandro Tassoni</em></div></summary><div
 class="csl-block">in <em>Ausiàs March e il Canone europeo</em>, a cura
 di <span class="smallcaps">Benedetta Aldinucci</span>, <span
 class="smallcaps">Cèlia Nadal Pasqual</span>, Alessandria, Edizioni
-dell’Orso, 2018, pp. 217-249</div></span></li>
-<li><span class="citation" data-cites="lazzarini2017b"><div
+dell’Orso, 2018, pp. 217-249</div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2017b"><details class="pub-entry"><summary><div
 class="csl-block"><em>Attorno alle <span>«Considerazioni sopra le Rime
-del Petrarca»</span></em></div><div class="csl-block">in <em>Alessandro
+del Petrarca»</span></em></div></summary><div class="csl-block">in <em>Alessandro
 Tassoni. Poeta, erudito, diplomatico nell’Europa dell’Età Moderna</em>,
 a cura di <span class="smallcaps">Maria Cristina Cabani</span>, <span
 class="smallcaps">Duccio Tongiorgi</span>, Modena, Franco Cosimo Panini,
-2017, pp. 121-138</div></span></li>
-<li><span class="citation" data-cites="lazzarini2016c"><div
-class="csl-block"><em>Canto VII</em></div><div class="csl-block">in
+2017, pp. 121-138</div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2016c"><details class="pub-entry"><summary><div
+class="csl-block"><em>Canto VII</em></div></summary><div class="csl-block">in
 <em>Lettura della Secchia rapita</em>, a cura di <span
 class="smallcaps">Davide Conrieri</span>, <span
 class="smallcaps">Pasquale Guaragnella</span>, Lecce, Argo, 2016, pp.
-89-105</div></span></li>
-<li><span class="citation" data-cites="lazzarini2012b"><div
+89-105</div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2012b"><details class="pub-entry"><summary><div
 class="csl-block"><em>4. Le fonti su Massimo Stanzione, intorno
-all’Accademia degli Oziosi e 5. Il Ms. XIV E 10</em></div><div
+all’Accademia degli Oziosi e 5. Il Ms. XIV E 10</em></div></summary><div
 class="csl-block">in <em>Tra Napoli e Milano. Viaggi di artisti
 nell’Italia del Seicento. 1. Da Tanzio da Varallo a Massimo
-Stanzione</em>, Firenze, Edifir, 2012, pp. 306-398</div></span></li>
-<li><span class="citation" data-cites="contelazzarini2012a"><div
+Stanzione</em>, Firenze, Edifir, 2012, pp. 306-398</div></details></span></li>
+<li><span class="citation" data-cites="contelazzarini2012a"><details class="pub-entry"><summary><div
 class="csl-block"><span class="smallcaps">Floriana Conte</span>, <span
 class="smallcaps">Andrea Lazzarini</span>, <em>Proposte per Massimo
 Stanzione (e una premessa su Salvator Rosa): 1. La cronologia, le
-iconografie, i committenti; 2. Le fonti</em></div><div
+iconografie, i committenti; 2. Le fonti</em></div></summary><div
 class="csl-block">in <em>La pittura italiana del Seicento all’Ermitage.
 Atti del convegno internazionale (Roma, Palazzo Barberini, 19-20 ottobre
 2011)</em>, a cura di <span class="smallcaps">Francesca
 Cappelletti</span>, <span class="smallcaps">Irina Artemieva</span>,
 Firenze, EDIFIR, 2012, pp. 185-226 [Lazzarini: 207-215, note
-57-97]</div></span></li>
+57-97]</div></details></span></li>
 </ul>
 <h2 id="voci-di-enciclopedia">Voci di enciclopedia</h2>
 <ul>
-<li><span class="citation" data-cites="lazzarini2019a"><div
-class="csl-block"><em>Tassoni, Alessandro</em></div><div
+<li><span class="citation" data-cites="lazzarini2019a"><details class="pub-entry"><summary><div
+class="csl-block"><em>Tassoni, Alessandro</em></div></summary><div
 class="csl-block">in <em>Dizionario Biografico degli Italiani</em>,
 Roma, Istituto della Enciclopedia Italiana, 2019, vol. XCV, pp. 150-156,
 URL: <a
 href="https://www.treccani.it/enciclopedia/alessandro-tassoni_%28Dizionario-Biografico%29/"
-role="doc-biblioref">https://www.treccani.it/enciclopedia/alessandro-tassoni_%28Dizionario-Biografico%29/</a></div></span></li>
-<li><span class="citation" data-cites="lazzarini2023b"><div
-class="csl-block"><em>Stigliani, Tommaso</em></div><div
+role="doc-biblioref">https://www.treccani.it/enciclopedia/alessandro-tassoni_%28Dizionario-Biografico%29/</a></div></details></span></li>
+<li><span class="citation" data-cites="lazzarini2023b"><details class="pub-entry"><summary><div
+class="csl-block"><em>Stigliani, Tommaso</em></div></summary><div
 class="csl-block">in <em>Dizionario Biografico degli Italiani</em>,
 Roma, Istituto della Enciclopedia Italiana, 2019, vol. XCIV, URL: <a
 href="https://www.treccani.it/enciclopedia/bio-stigliani-tommaso-tomaso_%28Dizionario-Biografico%29/"
-role="doc-biblioref">https://www.treccani.it/enciclopedia/bio-stigliani-tommaso-tomaso_%28Dizionario-Biografico%29/</a></div></span></li>
+role="doc-biblioref">https://www.treccani.it/enciclopedia/bio-stigliani-tommaso-tomaso_%28Dizionario-Biografico%29/</a></div></details></span></li>
 </ul></details>
 
 </main>
