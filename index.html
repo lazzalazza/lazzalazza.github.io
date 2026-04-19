@@ -53,7 +53,13 @@
       --max-width: 900px;
     }
     *, *::before, *::after { box-sizing: border-box; }
-    html { font-size: 18px; scroll-behavior: smooth; }
+    html {
+      font-size: 18px;
+      scroll-behavior: smooth;
+      /* Compensa la nav fissa in alto: lo scroll a un'ancora si ferma sotto
+         di essa, lasciando il titolo della sezione visibile. */
+      scroll-padding-top: 3.6rem;
+    }
     body {
       font-family: var(--font-main);
       color: var(--text);
