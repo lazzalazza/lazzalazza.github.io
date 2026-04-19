@@ -128,6 +128,20 @@
     main ul li::before { content: "—"; position: absolute; left: 0; color: var(--rule); }
     /* Misc */
     .smallcaps { font-variant: small-caps; }
+    /* Switcher lingua accanto al titolo "Profilo" */
+    .lang-toggle {
+      font-family: var(--font-sans); font-size: 0.7rem;
+      color: var(--gray-light); font-weight: 400;
+      text-transform: none; letter-spacing: 0;
+      margin-left: 0.8rem; user-select: none;
+      vertical-align: middle;
+    }
+    .lang-toggle button {
+      background: none; border: none; padding: 0 0.2rem;
+      color: var(--gray-light); cursor: pointer; font: inherit;
+    }
+    .lang-toggle button:hover   { color: var(--blue-mid); }
+    .lang-toggle button.active  { color: var(--blue); font-weight: 600; }
     a { color: var(--blue-mid); text-decoration: none; }
     a:hover { text-decoration: underline; }
     /* Footer */
@@ -223,7 +237,9 @@
   </div>
 </header>
 <h1 data-cv_short_title="Profilo" data-cv_menu_title="Profilo"
-id="profilo-breve-per-sito">Profilo</h1>
+id="profilo-breve-per-sito">Profilo <span class="lang-toggle"><button type="button" data-lang="it" class="active">it</button> / <button type="button" data-lang="en">en</button></span></h1>
+<div data-profile-lang="it">
+
 <p>La mia ricerca si concentra sulla letteratura italiana tra Cinque e
 Ottocento, con particolare attenzione ai rapporti tra cultura
 letteraria, saperi scientifici e dibattito critico-teorico. Un tratto
@@ -248,6 +264,37 @@ Literature</em>.</p>
 <p>I miei interessi includono inoltre la letteratura meridionale tra
 Cinque e Seicento, la circolazione delle forme liriche e narrative nel
 Barocco e la filologia d’autore.</p>
+</div>
+<div data-profile-lang="en" hidden>
+
+<p>My research focuses on Italian literature from the sixteenth to the
+nineteenth century, with particular attention to the relationship
+between literary culture, scientific knowledge, and critical-theoretical
+debate. A consistent feature of my work is its emphasis on the
+philological, linguistic, and ecdotic dimension of Italian literary
+studies.</p>
+<p>I have worked extensively on Alessandro Tassoni and on the history of
+poetics between sixteenth-century Petrarchism and the Enlightenment —
+themes at the core of the monographs <em>«Pazza cosa sarebbe la poesia».
+Alessandro Tassoni lettore del Trecento fra Barocco ed Età
+muratoriana</em> (2020) and <em>I Fiscali del Diavolo. Muratori,
+Fontanini e Castelvetro</em> (2021). A critical edition of the
+<em>Secchia rapita</em> (with Maria Cristina Cabani and Ottavio Besomi)
+is forthcoming.</p>
+<p>In recent years I have devoted several studies to the work of
+Federico De Roberto and to his engagement with European positivist
+culture, and more broadly to the relationship between literature and
+science in the second half of the nineteenth century. In this area I
+designed and coordinate the PRIN 2022 project <em>Literature and
+Sciences in the ‘Nuova Italia’ (1848–1915): Psychology, Anthropology,
+Medicine</em> and the PRIN PNRR 2022 project <em>Theorizing the
+Passions: Paolo Mantegazza, his cultural network and 19th-century
+Italian Literature</em>.</p>
+<p>My other interests include Southern Italian literature between the
+sixteenth and the seventeenth century, the circulation of lyric and
+narrative forms in the Baroque, and authorial philology.</p>
+</div>
+
 <h1 id="posizione">Posizione</h1>
 <dl>
 <dt>1/10/2024–</dt>
@@ -692,6 +739,23 @@ role="doc-biblioref">https://www.treccani.it/enciclopedia/bio-stigliani-tommaso-
   });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && nav.classList.contains('nav-open')) { setOpen(false); toggle.focus(); }
+  });
+}());
+
+// Switcher lingua per il Profilo (mostra/nasconde i div data-profile-lang)
+(function () {
+  var buttons = document.querySelectorAll('.lang-toggle button[data-lang]');
+  if (!buttons.length) return;
+  function setLang(lang) {
+    document.querySelectorAll('[data-profile-lang]').forEach(function (el) {
+      el.hidden = (el.getAttribute('data-profile-lang') !== lang);
+    });
+    buttons.forEach(function (b) {
+      b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+    });
+  }
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () { setLang(b.getAttribute('data-lang')); });
   });
 }());</script>
 </body>
