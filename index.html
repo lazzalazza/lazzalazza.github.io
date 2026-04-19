@@ -822,6 +822,27 @@ role="doc-biblioref">https://www.treccani.it/enciclopedia/bio-stigliani-tommaso-
   });
 }());
 
+// Apertura automatica del <details> della sezione bersaglio quando si segue
+// un anchor link interno (click in nav o cambio di #hash, anche al caricamento).
+(function () {
+  function openSection(id) {
+    if (!id) return;
+    var det = document.querySelector('details[data-section="' + id + '"]');
+    if (det && !det.open) det.open = true;
+  }
+  function handleHash() {
+    openSection((location.hash || '').slice(1));
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      var href = a.getAttribute('href');
+      if (href && href.length > 1) openSection(href.slice(1));
+    });
+  });
+  window.addEventListener('hashchange', handleHash);
+  if (location.hash) handleHash();
+}());
+
 // Switcher lingua per il Profilo (mostra/nasconde i div data-profile-lang)
 (function () {
   var buttons = document.querySelectorAll('.lang-toggle button[data-lang]');
