@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://andrealazzarini.it/sitemap.xml
